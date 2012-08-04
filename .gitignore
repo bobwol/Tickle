@@ -1,4 +1,6 @@
 node_modules/
+public/css/app
+public/js/app
 
 lib-cov
 *.seed

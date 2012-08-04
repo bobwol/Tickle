@@ -3,11 +3,17 @@ Todos = require "../../../app/todos/Todos.coffee"
 Todo = require "../../../app/todos/Todo.coffee"
 
 describe "Todos", ->
+	console.log "todo", Todo
+	console.log "todos", Todos
+
 	describe "byId", ->
-		it "should return Todo with given ID", ->
-			todo = Todos.byId(1)
-			todo.should.be.an.instanceOf(Todo)
-		it "should return null if Todo with given ID does not exists", ->
+		it "should return Todo with given ID", (done) ->
+			Todos.byId 1, (err, todo) ->
+				todo.should.be.an.instanceOf(Todo)
+				done()
+		it "should return null if Todo with given ID does not exists", (done) ->
+			Todos.byId 20, (err, todo) ->
+
 	describe "validate", ->
 		it "should return true if todo is valid", ->
 		it "should return false if todo is invalid", ->

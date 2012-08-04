@@ -21,7 +21,6 @@ app.configure () ->
   app.use express.methodOverride()
   app.use app.router
   app.use express.static(path.join(__dirname, "public"))
-  app.use require("connect-assets")()
 
 app.configure "development", () ->
   app.use express.errorHandler()
