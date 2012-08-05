@@ -22,7 +22,8 @@
   "devDependencies": {
     "mocha": "1.3.x",
     "zombie": "1.3.x",
-    "groc": "0.2.x"
+    "groc": "0.2.x",
+    "should": "1.0.x"
   },
   "license": "MIT"
 }
