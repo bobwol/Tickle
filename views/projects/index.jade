@@ -1,0 +1,15 @@
+extends ../layout
+
+block pageHeadersExtras
+	nav.actions.bar 
+		ul 
+			li.add
+				a.btn(href="/projects/add") Add Project
+
+block content
+	nav#projectsList
+		ul
+			li.projectBox
+				h5 Project Name ...
+				p A short project description should be here ...
+				a.more.btn.gray.small(href="/projects/0") View

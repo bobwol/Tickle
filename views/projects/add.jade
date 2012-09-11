@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+	form(action="/projects/add", method="post")
+		div.form-element
+			label(for="proj-name") Name
+			input(type="text", id="proj-name", name="proj-name", placeholder="Project name") 
+		div.form-element
+			label(for="proj-desc") Description (optional)
+			textarea(id="proj-desc", name="proj-desc", placeholder="It's nice to have a short description for your project") 
+		div.form-element
+			input.btn(type="submit", value="Add Project")

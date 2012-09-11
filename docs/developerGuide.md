@@ -27,6 +27,17 @@ Application Structure
 	/docs					# markdown documentation
 
 
+### Server-side Module Structure
+
+Each server side module is declared in `/app/{module}`. 
+Within it, contains: 
+
+- `helper.coffee`: Helper/Service class for the module
+- `routes.coffee`: Route declaration for module
+- Mongoose models
+- Any other misc classes as necessary
+
+
 Starting to develop
 -------------------
 

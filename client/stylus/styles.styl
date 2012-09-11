@@ -1,7 +1,95 @@
+@import nib
+
+global-reset()
+
+.clear 
+	clear: both
+
+html, body
+	min-height: 100%
+
 body 
-  padding: 52px
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
-  
-a 
-  color: #00B7FF
-  background: red
+	font: 14px/1.6 Lato, sans-serif
+	color: #444
+	background: #ececec
+	background: linear-gradient(top, #eaeaea 0, #fff 0.5)
+
+h1, h2, h3, h4, h5, h6, p, pre, blockquote, ul, ol 
+	margin: 0 0 14px
+
+headerBase = 42px			// base font size
+for i in 1 2 3 4 5 6
+	h{i} 
+		headerDecrement = (i - 1) * 0.11 * headerBase
+		font-size: headerBase - headerDecrement
+		line-height: 1.26em
+
+header 
+	h1 
+		margin-bottom: 0
+
+ul, ol 
+	margin-left: 25px
+
+ul 
+	list-style: disc
+
+ol 
+	list-style: decimal
+
+nav 
+	ul, ol 
+		list-style: none
+		margin: 0
+
+pre, code
+	font-family: monospace
+
+.btn 
+	&:link, &:visited, &
+		font-size: 14px
+		line-height: 28px
+		border: 1px solid darken(#62B4DE, 12%)
+		background: linear-gradient(top, lighten(#62B4DE, 5%), darken(#62B4DE, 15%))
+		padding: 0 12px
+		border-radius: 4px
+		display: inline-block
+		color: #fff
+		text-decoration: none
+		cursor: pointer
+
+	&.small
+		line-height: 24px
+		border-radius: 6px
+
+	&.gray
+		background: linear-gradient(top, #fafafa, #e2e2e2)
+		color: #666
+		border-color: #e0e0e0
+
+form
+	.form-element 
+		margin-bottom: 10px
+
+	label 
+		display: block
+		color: #666
+
+	input[type=text] 
+		border: 1px solid #afafaf
+		width: 320px
+		padding: 5px
+		font-size: 16px
+
+	textarea 
+		width: 600px
+		height: 240px
+		padding: 5px
+		font-size: 14px
+		font-family: monospace
+		border: 1px solid #afafaf
+
+
+@import "masthead"
+@import "page"
+@import "projects"

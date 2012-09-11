@@ -1,8 +1,21 @@
 doctype 5
 html
-  head
-    title= title
-    script(src="js/require.js", data-main="js/app/init.js")
-    link(rel="stylesheet", href="css/app/styles.css")
-  body
-    block content
+	head
+		title= title
+		script(src="/js/require.js", data-main="/js/app/init.js")
+		link(rel="stylesheet", href="/css/app/styles.css")
+	body
+		header#masthead 
+			h1#sitename
+				a(href="/") Tickle
+			p#tagline Just a simple Todo App
+			div.clear
+
+		section#page
+			header#pageHeader
+				h1= title
+				block pageHeaderExtras
+				div.clear
+			
+			div#contentWrapper
+				block content

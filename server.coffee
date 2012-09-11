@@ -1,18 +1,13 @@
-# Tickle
-# ======
-# [GitHub](https://github.com/jiewmeng/Tickle)
-# [Trello](https://trello.com/b/mGeBbmDz)
-
 express = require "express"
-routes = require "./routes"
 http = require "http"
+fs = require "fs"
 path = require "path"
-require "coffee-script"
-
 app = express()
+mongoose = require "mongoose"
+config = require "./config"
 
-app.configure () ->
-  app.set "port", process.env.PORT || 3000
+app.configure ->
+  app.set "port", process.env.PORT or 3000
   app.set "views", __dirname + "/views"
   app.set "view engine", "jade"
   app.use express.favicon()
@@ -22,10 +17,22 @@ app.configure () ->
   app.use app.router
   app.use express.static(path.join(__dirname, "public"))
 
-app.configure "development", () ->
+app.configure "development", ->
   app.use express.errorHandler()
+  mongoose.connect "localhost", config.database.development
 
-app.get "/", routes.index
+app.configure "production", ->
+  mongoose.connect "localhost", config.database.production
 
-http.createServer(app).listen app.get("port"), () ->
+# initialize all router files in ./routes
+routesPath = "routes"
+files = fs.readdirSync routesPath
+files.forEach (file) ->
+  filePath = path.resolve "./", routesPath, file
+  route = require filePath
+  console.log filePath
+  route.init(app)
+
+http.createServer(app).listen app.get("port"), ->
   console.log "Express server listening on port " + app.get("port")
+
